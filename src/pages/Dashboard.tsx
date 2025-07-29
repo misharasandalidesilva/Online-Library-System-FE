@@ -1,3 +1,5 @@
+// File: src/pages/Dashboard.tsx
+// Updated Unique Look - Online Library System Dashboard
 import { useState } from 'react';
 import {
     BookOpen,
@@ -11,9 +13,18 @@ import {
     Search,
     Settings
 } from 'lucide-react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, AreaChart, Area } from 'recharts';
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    ResponsiveContainer,
+    AreaChart,
+    Area
+} from 'recharts';
 
-export default function DashBoard() {
+export default function Dashboard() {
     const [notifications] = useState(3);
 
     const monthlyData = [
@@ -42,8 +53,8 @@ export default function DashBoard() {
             trend: 'up',
             subtitle: 'from last month',
             icon: Users,
-            iconBg: 'bg-blue-100',
-            iconColor: 'text-blue-600'
+            iconBg: 'bg-gradient-to-tr from-teal-100 to-cyan-100',
+            iconColor: 'text-teal-600'
         },
         {
             title: 'Total Books',
@@ -52,7 +63,7 @@ export default function DashBoard() {
             trend: 'up',
             subtitle: 'from last month',
             icon: BookOpen,
-            iconBg: 'bg-green-100',
+            iconBg: 'bg-gradient-to-tr from-green-100 to-emerald-100',
             iconColor: 'text-green-600'
         },
         {
@@ -62,8 +73,8 @@ export default function DashBoard() {
             trend: 'down',
             subtitle: 'from last month',
             icon: Calendar,
-            iconBg: 'bg-purple-100',
-            iconColor: 'text-purple-600'
+            iconBg: 'bg-gradient-to-tr from-sky-100 to-blue-100',
+            iconColor: 'text-sky-600'
         },
         {
             title: 'Monthly Revenue',
@@ -72,87 +83,77 @@ export default function DashBoard() {
             trend: 'up',
             subtitle: 'from last month',
             icon: DollarSign,
-            iconBg: 'bg-yellow-100',
-            iconColor: 'text-yellow-600'
+            iconBg: 'bg-gradient-to-tr from-lime-100 to-yellow-100',
+            iconColor: 'text-lime-600'
         }
     ];
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
             {/* Header */}
-            <header className="bg-white border-b border-gray-200">
+            <header className="bg-white border-b border-teal-300 shadow-sm sticky top-0 z-20">
                 <div className="px-6 py-4">
                     <div className="flex items-center justify-between">
                         <div>
-                            <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-                            <p className="text-gray-600 mt-1">Welcome back! Here's what's happening with your library.</p>
+                            <h1 className="text-3xl font-bold text-teal-800 tracking-tight">📚 Library Dashboard</h1>
+                            <p className="text-teal-600 text-sm mt-1">Here’s a summary of this month's library activity</p>
                         </div>
 
                         <div className="flex items-center space-x-4">
-                            {/* Search */}
                             <div className="relative">
-                                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-teal-400 w-5 h-5" />
                                 <input
                                     type="text"
                                     placeholder="Search..."
-                                    className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64"
+                                    className="pl-10 pr-4 py-2 border border-teal-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 w-72"
                                 />
                             </div>
-
-                            {/* Notifications */}
-                            <button className="relative p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors">
-                                <Bell className="w-5 h-5" />
+                            <button className="relative p-2 text-teal-600 hover:text-teal-800 hover:bg-teal-100 rounded-lg transition-colors">
+                                <Bell className="w-6 h-6" />
                                 {notifications > 0 && (
-                                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-medium">
-                                        {notifications}
-                                    </span>
+                                    <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
+                    {notifications}
+                  </span>
                                 )}
                             </button>
-
-                            {/* Settings */}
-                            <button className="p-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors">
-                                <Settings className="w-5 h-5" />
+                            <button className="p-2 text-teal-600 hover:text-teal-800 hover:bg-teal-100 rounded-lg transition-colors">
+                                <Settings className="w-6 h-6" />
                             </button>
-
-                            {/* Profile */}
-                            <div className="flex items-center space-x-3">
-                                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                                    <User className="w-5 h-5 text-white" />
-                                </div>
+                            <div className="w-9 h-9 bg-teal-600 rounded-full flex items-center justify-center shadow-md">
+                                <User className="w-6 h-6 text-white" />
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-            {/* Main Content */}
-            <main className="px-6 py-8">
+            {/* Main */}
+            <main className="px-6 py-8 max-w-7xl mx-auto">
                 {/* Stats Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                    {statsCards.map((card, index) => {
-                        const IconComponent = card.icon;
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                    {statsCards.map((card, i) => {
+                        const Icon = card.icon;
                         return (
-                            <div key={index} className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                                <div className="flex items-start justify-between mb-4">
-                                    <div className={`w-12 h-12 rounded-lg ${card.iconBg} flex items-center justify-center`}>
-                                        <IconComponent className={`w-6 h-6 ${card.iconColor}`} />
+                            <div
+                                key={i}
+                                className="bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300"
+                            >
+                                <div className="flex justify-between items-center mb-4">
+                                    <div className={`w-14 h-14 rounded-xl ${card.iconBg} flex items-center justify-center`}>
+                                        <Icon className={`w-7 h-7 ${card.iconColor}`} />
                                     </div>
-                                    <div className={`flex items-center space-x-1 text-sm font-medium ${
-                                        card.trend === 'up' ? 'text-green-600' : 'text-red-500'
-                                    }`}>
-                                        {card.trend === 'up' ? (
-                                            <TrendingUp className="w-4 h-4" />
-                                        ) : (
-                                            <TrendingDown className="w-4 h-4" />
-                                        )}
+                                    <div
+                                        className={`flex items-center text-sm font-medium space-x-1 ${
+                                            card.trend === 'up' ? 'text-green-600' : 'text-red-500'
+                                        }`}
+                                    >
+                                        {card.trend === 'up' ? <TrendingUp className="w-5 h-5" /> : <TrendingDown className="w-5 h-5" />}
                                         <span>{card.change}</span>
                                     </div>
                                 </div>
-                                <div>
-                                    <p className="text-sm text-gray-600 mb-1">{card.title}</p>
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-1">{card.value}</h3>
-                                    <p className="text-sm text-gray-500">{card.subtitle}</p>
-                                </div>
+                                <p className="text-sm text-teal-700">{card.title}</p>
+                                <h3 className="text-3xl font-extrabold text-gray-900">{card.value}</h3>
+                                <p className="text-sm text-gray-400">{card.subtitle}</p>
                             </div>
                         );
                     })}
@@ -160,156 +161,39 @@ export default function DashBoard() {
 
                 {/* Charts */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Monthly Revenue Chart */}
-                    <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                        <div className="mb-6">
-                            <h2 className="text-lg font-semibold text-gray-900">Monthly Revenue</h2>
-                            <p className="text-sm text-gray-600">Library membership and fees revenue</p>
-                        </div>
+                    <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-md">
+                        <h2 className="text-xl font-semibold text-teal-900 mb-1">📈 Monthly Revenue</h2>
+                        <p className="text-sm text-gray-500 mb-4">Library earnings from fees and fines</p>
                         <div className="h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <AreaChart data={monthlyData}>
                                     <defs>
                                         <linearGradient id="revenueGradient" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="5%" stopColor="#8884d8" stopOpacity={0.3} />
-                                            <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+                                            <stop offset="5%" stopColor="#14b8a6" stopOpacity={0.3} />
+                                            <stop offset="95%" stopColor="#14b8a6" stopOpacity={0} />
                                         </linearGradient>
                                     </defs>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                                    <XAxis dataKey="month" tickLine={false} tick={{ fontSize: 12, fill: '#666' }} />
-                                    <YAxis tickLine={false} tick={{ fontSize: 12, fill: '#666' }} tickFormatter={(value) => `$${value}`} />
-                                    <Area type="monotone" dataKey="revenue" stroke="#8884d8" strokeWidth={3} fill="url(#revenueGradient)" />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#d1fae5" />
+                                    <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+                                    <YAxis tickFormatter={(value) => `$${value}`} tick={{ fontSize: 12 }} />
+                                    <Area type="monotone" dataKey="revenue" stroke="#14b8a6" fill="url(#revenueGradient)" strokeWidth={3} />
                                 </AreaChart>
                             </ResponsiveContainer>
                         </div>
                     </div>
 
-                    {/* Books Borrowed Trend */}
-                    <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                        <div className="mb-6">
-                            <h2 className="text-lg font-semibold text-gray-900">Books Borrowed Trend</h2>
-                            <p className="text-sm text-gray-600">Weekly borrowing activity</p>
-                        </div>
+                    <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-md">
+                        <h2 className="text-xl font-semibold text-teal-900 mb-1">📚 Borrowing Trend</h2>
+                        <p className="text-sm text-gray-500 mb-4">Weekly statistics of book borrowing</p>
                         <div className="h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart data={borrowingTrend}>
-                                    <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                                    <XAxis dataKey="week" tickLine={false} tick={{ fontSize: 12, fill: '#666' }} />
-                                    <YAxis tickLine={false} tick={{ fontSize: 12, fill: '#666' }} />
-                                    <Line
-                                        type="monotone"
-                                        dataKey="borrowed"
-                                        stroke="#10b981"
-                                        strokeWidth={3}
-                                        dot={{ fill: '#10b981', strokeWidth: 2, r: 6 }}
-                                        activeDot={{ r: 8, fill: '#10b981' }}
-                                    />
+                                    <CartesianGrid strokeDasharray="3 3" stroke="#d1fae5" />
+                                    <XAxis dataKey="week" tick={{ fontSize: 12 }} />
+                                    <YAxis tick={{ fontSize: 12 }} />
+                                    <Line type="monotone" dataKey="borrowed" stroke="#14b8a6" strokeWidth={3} />
                                 </LineChart>
                             </ResponsiveContainer>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Additional Info Cards */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
-                    {/* Quick Stats */}
-                    <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Stats</h3>
-                        <div className="space-y-4">
-                            <div className="flex justify-between items-center">
-                                <span className="text-gray-600">Books Available</span>
-                                <span className="font-semibold text-gray-900">8,608</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className="text-gray-600">Books on Loan</span>
-                                <span className="font-semibold text-gray-900">342</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className="text-gray-600">Overdue Books</span>
-                                <span className="font-semibold text-red-600">23</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className="text-gray-600">New Members (This Month)</span>
-                                <span className="font-semibold text-green-600">47</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Recent Activity */}
-                    <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
-                        <div className="space-y-3">
-                            <div className="flex items-center space-x-3">
-                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                <div className="flex-1">
-                                    <p className="text-sm text-gray-900">Book returned: "The Great Gatsby"</p>
-                                    <p className="text-xs text-gray-500">2 minutes ago</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center space-x-3">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                <div className="flex-1">
-                                    <p className="text-sm text-gray-900">New member registered</p>
-                                    <p className="text-xs text-gray-500">15 minutes ago</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center space-x-3">
-                                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                                <div className="flex-1">
-                                    <p className="text-sm text-gray-900">Book reserved: "1984"</p>
-                                    <p className="text-xs text-gray-500">1 hour ago</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center space-x-3">
-                                <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                                <div className="flex-1">
-                                    <p className="text-sm text-gray-900">Overdue reminder sent</p>
-                                    <p className="text-xs text-gray-500">2 hours ago</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Popular Categories */}
-                    <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Popular Categories</h3>
-                        <div className="space-y-3">
-                            <div className="flex justify-between items-center">
-                                <span className="text-gray-600">Fiction</span>
-                                <div className="flex items-center space-x-2">
-                                    <div className="w-16 h-2 bg-gray-200 rounded-full">
-                                        <div className="w-12 h-2 bg-blue-500 rounded-full"></div>
-                                    </div>
-                                    <span className="text-sm text-gray-900">75%</span>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className="text-gray-600">Science</span>
-                                <div className="flex items-center space-x-2">
-                                    <div className="w-16 h-2 bg-gray-200 rounded-full">
-                                        <div className="w-10 h-2 bg-green-500 rounded-full"></div>
-                                    </div>
-                                    <span className="text-sm text-gray-900">62%</span>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className="text-gray-600">History</span>
-                                <div className="flex items-center space-x-2">
-                                    <div className="w-16 h-2 bg-gray-200 rounded-full">
-                                        <div className="w-8 h-2 bg-purple-500 rounded-full"></div>
-                                    </div>
-                                    <span className="text-sm text-gray-900">48%</span>
-                                </div>
-                            </div>
-                            <div className="flex justify-between items-center">
-                                <span className="text-gray-600">Biography</span>
-                                <div className="flex items-center space-x-2">
-                                    <div className="w-16 h-2 bg-gray-200 rounded-full">
-                                        <div className="w-6 h-2 bg-orange-500 rounded-full"></div>
-                                    </div>
-                                    <span className="text-sm text-gray-900">35%</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

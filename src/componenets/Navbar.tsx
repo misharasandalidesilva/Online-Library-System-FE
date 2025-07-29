@@ -1,72 +1,86 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const navigate = useNavigate()
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogin = () => {
-        console.log("Login")
-        navigate("/login")
-    }
+        navigate("/login");
+    };
 
     const handleLogout = () => {
-        console.log("Logout")
-        navigate("/")
-    }
+        navigate("/");
+    };
 
     const handleDashboard = () => {
-        console.log("Dashboard")
-        navigate("/dashboard")
-    }
+        navigate("/dashboard");
+    };
 
     const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen)
-    }
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
-        <nav className='bg-white shadow-lg border-b border-gray-200'>
-            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-                <div className='flex justify-between items-center h-16'>
+        <nav className="bg-gradient-to-r from-teal-500 via-green-500 to-emerald-600 shadow-md">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+                <div className="flex justify-between items-center h-16">
                     {/* Logo Section */}
-                    <div className='flex items-center'>
-                        <div className='flex-shrink-0'>
-                            <h1 className='text-2xl font-bold text-indigo-600'>📚 Book Club Library</h1>
-                        </div>
+                    <div
+                        className="flex items-center space-x-3 cursor-pointer"
+                        onClick={() => navigate("/")}
+                    >
+                        <div className="text-white text-3xl select-none">📚</div>
+                        <h1 className="text-white font-extrabold text-xl sm:text-2xl tracking-wide hover:underline">
+                            Online Library System
+                        </h1>
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className='hidden md:flex items-center space-x-4'>
+                    <div className="hidden md:flex items-center space-x-6">
                         <button
                             onClick={handleLogin}
-                            className='bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+                            className="px-5 py-2 rounded-lg bg-white text-teal-600 font-semibold hover:bg-teal-100 transition"
                         >
                             Login
                         </button>
 
                         <button
                             onClick={handleLogout}
-                            className='bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500'
+                            className="px-5 py-2 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition"
                         >
                             Logout
                         </button>
 
                         <button
                             onClick={handleDashboard}
-                            className='bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500'
+                            className="px-5 py-2 rounded-lg bg-teal-700 text-white font-semibold hover:bg-teal-800 transition"
                         >
                             Dashboard
                         </button>
                     </div>
 
                     {/* Mobile menu button */}
-                    <div className='md:hidden'>
+                    <div className="md:hidden">
                         <button
                             onClick={toggleMenu}
-                            className='text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600'
+                            className="text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+                            aria-label="Toggle menu"
                         >
-                            <svg className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
+                            <svg
+                                className="h-7 w-7"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                viewBox="0 0 24 24"
+                            >
+                                {isMenuOpen ? (
+                                    <path d="M6 18L18 6M6 6l12 12" />
+                                ) : (
+                                    <path d="M4 6h16M4 12h16M4 18h16" />
+                                )}
                             </svg>
                         </button>
                     </div>
@@ -74,34 +88,32 @@ const Navbar = () => {
 
                 {/* Mobile Navigation Menu */}
                 {isMenuOpen && (
-                    <div className='md:hidden'>
-                        <div className='px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200'>
-                            <button
-                                onClick={handleLogin}
-                                className='block w-full text-left bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-md text-base font-medium'
-                            >
-                                Login
-                            </button>
+                    <div className="md:hidden mt-2 bg-white rounded-lg shadow-lg">
+                        <button
+                            onClick={handleLogin}
+                            className="block w-full text-left px-5 py-3 font-semibold text-teal-600 hover:bg-teal-100 transition rounded-t-lg"
+                        >
+                            Login
+                        </button>
 
-                            <button
-                                onClick={handleLogout}
-                                className='block w-full text-left bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-md text-base font-medium'
-                            >
-                                Logout
-                            </button>
+                        <button
+                            onClick={handleLogout}
+                            className="block w-full text-left px-5 py-3 font-semibold text-green-700 hover:bg-green-100 transition"
+                        >
+                            Logout
+                        </button>
 
-                            <button
-                                onClick={handleDashboard}
-                                className='block w-full text-left bg-gray-600 hover:bg-gray-700 text-white px-3 py-2 rounded-md text-base font-medium'
-                            >
-                                Dashboard
-                            </button>
-                        </div>
+                        <button
+                            onClick={handleDashboard}
+                            className="block w-full text-left px-5 py-3 font-semibold text-teal-800 hover:bg-teal-200 transition rounded-b-lg"
+                        >
+                            Dashboard
+                        </button>
                     </div>
                 )}
             </div>
         </nav>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;
