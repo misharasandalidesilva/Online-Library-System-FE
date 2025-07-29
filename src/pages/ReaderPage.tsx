@@ -94,11 +94,10 @@ const ReaderPage: React.FC = () => {
             <div className="flex justify-between items-center mb-6">
                 <div>
                     <h1 className="text-2xl font-bold">Reader Management</h1>
-                    <p className="text-gray-600">Manage library members and their information</p>
                 </div>
                 <button
                     onClick={handleAddReader}
-                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                    className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
                 >
                     Add New Reader
                 </button>

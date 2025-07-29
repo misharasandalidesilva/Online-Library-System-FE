@@ -87,7 +87,6 @@ const BookPage: React.FC = () => {
             <div className="flex justify-between items-center mb-6">
                 <div>
                     <h1 className="text-2xl font-bold">Book Management</h1>
-                    <p className="text-gray-600">Manage books in your library catalog</p>
                 </div>
                 <button
                     className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"

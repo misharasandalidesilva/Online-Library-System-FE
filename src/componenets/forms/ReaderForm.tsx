@@ -218,7 +218,7 @@ const ReaderForm: React.FC<ReaderFormProps> = ({ reader, onSubmit, onClose }) =>
                         </button>
                         <button
                             type="submit"
-                            className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                            className="inline-flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
                         >
                             <Save className="w-4 h-4" />
                             <span>Save Reader</span>
