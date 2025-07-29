@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .App {
   text-align: center;
 }
@@ -30,7 +29,14 @@
 }
 
 @keyframes App-logo-spin {
-=======
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -52,7 +58,7 @@
 }
 
 @keyframes logo-spin {
->>>>>>> d5c2487 (Done)
+
   from {
     transform: rotate(0deg);
   }
@@ -60,8 +66,6 @@
     transform: rotate(360deg);
   }
 }
-<<<<<<< HEAD
-=======
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
@@ -76,4 +80,4 @@
 .read-the-docs {
   color: #888;
 }
->>>>>>> d5c2487 (Done)
+
