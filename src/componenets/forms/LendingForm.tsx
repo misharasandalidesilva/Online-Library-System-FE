@@ -40,19 +40,23 @@ const LendingForm: React.FC<Props> = ({ onSubmit, books, readers }) => {
     return (
         <form
             onSubmit={handleSubmit}
-            className="bg-green-50 p-6 rounded-xl shadow-md space-y-4 max-w-md mx-auto"
-            style={{ border: '1px solid #a7f3d0' }} // subtle green border for better style
+            className="backdrop-blur-sm bg-green/70 border border-green-200 p-8 rounded-2xl shadow-2xl space-y-6 max-w-xl mx-auto mt-10 transition-all duration-300"
         >
+            <h2 className="text-2xl font-bold text-green-800 text-center mb-2 tracking-tight">
+                 Lend a Book
+            </h2>
+
+            {/* Book Selection */}
             <div>
-                <label className="block font-semibold mb-1 text-green-800">Select Book</label>
+                <label className="block font-medium text-green-700 mb-2"> Select Book</label>
                 <select
                     name="bookId"
                     value={formData.bookId}
                     onChange={handleChange}
-                    className="w-full border border-green-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="w-full p-3 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                     required
                 >
-                    <option value="">-- Select Book --</option>
+                    <option value=""> Select Book </option>
                     {books.map((book) => (
                         <option key={book._id} value={book._id}>
                             {book.title}
@@ -61,16 +65,17 @@ const LendingForm: React.FC<Props> = ({ onSubmit, books, readers }) => {
                 </select>
             </div>
 
+            {/* Reader Selection */}
             <div>
-                <label className="block font-semibold mb-1 text-green-800">Select Reader</label>
+                <label className="block font-medium text-green-700 mb-2"> Select Reader</label>
                 <select
                     name="readerId"
                     value={formData.readerId}
                     onChange={handleChange}
-                    className="w-full border border-green-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="w-full p-3 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                     required
                 >
-                    <option value="">-- Select Reader --</option>
+                    <option value=""> Select Reader </option>
                     {readers.map((reader) => (
                         <option key={reader._id} value={reader._id}>
                             {reader.first_name} {reader.last_name}
@@ -79,47 +84,50 @@ const LendingForm: React.FC<Props> = ({ onSubmit, books, readers }) => {
                 </select>
             </div>
 
-            <div>
-                <label className="block font-semibold mb-1 text-green-800">Lend Date</label>
-                <input
-                    name="lendDate"
-                    type="date"
-                    value={formData.lendDate}
-                    onChange={handleChange}
-                    className="w-full border border-green-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
-                />
+            {/* Dates */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label className="block font-medium text-green-700 mb-2"> Lend Date</label>
+                    <input
+                        name="lendDate"
+                        type="date"
+                        value={formData.lendDate}
+                        onChange={handleChange}
+                        className="w-full p-3 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                    />
+                </div>
+                <div>
+                    <label className="block font-medium text-green-700 mb-2"> Due Date</label>
+                    <input
+                        name="dueDate"
+                        type="date"
+                        value={formData.dueDate}
+                        onChange={handleChange}
+                        className="w-full p-3 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
+                        required
+                    />
+                </div>
             </div>
 
             <div>
-                <label className="block font-semibold mb-1 text-green-800">Due Date</label>
-                <input
-                    name="dueDate"
-                    type="date"
-                    value={formData.dueDate}
-                    onChange={handleChange}
-                    className="w-full border border-green-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
-                    required
-                />
-            </div>
-
-            <div>
-                <label className="block font-semibold mb-1 text-green-800">Return Date</label>
+                <label className="block font-medium text-green-700 mb-2"> Return Date</label>
                 <input
                     name="returnDate"
                     type="date"
                     value={formData.returnDate || ""}
                     onChange={handleChange}
-                    className="w-full border border-green-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="w-full p-3 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                 />
             </div>
 
+            {/* Status */}
             <div>
-                <label className="block font-semibold mb-1 text-green-800">Status</label>
+                <label className="block font-medium text-green-700 mb-2"> Status</label>
                 <select
                     name="status"
                     value={formData.status}
                     onChange={handleChange}
-                    className="w-full border border-green-300 p-2 rounded focus:outline-none focus:ring-2 focus:ring-green-400"
+                    className="w-full p-3 border border-green-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                 >
                     <option value="borrowed">Borrowed</option>
                     <option value="returned">Returned</option>
@@ -127,14 +135,16 @@ const LendingForm: React.FC<Props> = ({ onSubmit, books, readers }) => {
                 </select>
             </div>
 
+            {/* Submit Button */}
             <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white font-semibold py-3 rounded-xl shadow-lg hover:from-green-700 hover:to-green-600 transition"
+                className="w-full py-3 rounded-xl bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white font-semibold shadow-md transition-transform transform hover:scale-105"
             >
-                Lend Book
+                 Lend Book
             </button>
         </form>
     );
+
 };
 
 export default LendingForm;

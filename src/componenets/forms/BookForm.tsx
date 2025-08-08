@@ -89,18 +89,18 @@ const BookForm: React.FC<BookFormProps> = ({ book, onSubmit, onClose }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 z-50">
-                <div className="bg-white rounded-lg shadow-xl w-full max-w-md ring-1 ring-gray-300">
+            <div className="fixed inset-0 bg-green-300 bg-opacity-40 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
+                <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl border border-green-200">
                     {/* Header */}
-                    <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-                        <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                            <BookPlus className="w-5 h-5 mr-2 text-green-600" />
+                    <div className="bg-gradient-to-r from-green-500 to-green-700 rounded-t-2xl px-6 py-5 flex items-center justify-between text-white shadow-md">
+                        <h3 className="text-xl font-bold flex items-center">
+                            {/*<BookPlus className="w-5 h-5 mr-2 text-green-600" />*/}
                             {book ? "Edit Book" : "Add Book"}
                         </h3>
                         <button
                             type="button"
                             onClick={onClose}
-                            className="text-gray-400 hover:text-gray-600 transition"
+                            className="hover:bg-white hover:text-green-700 p-1 rounded-full transition duration-200"
                             aria-label="Close form"
                         >
                             <X className="w-5 h-5" />
@@ -110,35 +110,35 @@ const BookForm: React.FC<BookFormProps> = ({ book, onSubmit, onClose }) => {
                     {/* Body */}
                     <div className="px-6 py-6 space-y-5">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Title *</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Title </label>
                             <input
                                 type="text"
                                 name="title"
                                 value={formData.title}
                                 onChange={handleChange}
-                                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+                                className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 ${
                                     formErrors.title ? "border-red-500" : "border-gray-300"
                                 }`}
                             />
-                            {formErrors.title && <p className="text-red-600 text-sm mt-1">{formErrors.title}</p>}
+                            {formErrors.title && <p className="text-red-500 text-sm mt-1">{formErrors.title}</p>}
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Author *</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Author </label>
                             <input
                                 type="text"
                                 name="author"
                                 value={formData.author}
                                 onChange={handleChange}
-                                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+                                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 ${
                                     formErrors.author ? "border-red-500" : "border-gray-300"
                                 }`}
                             />
-                            {formErrors.author && <p className="text-red-600 text-sm mt-1">{formErrors.author}</p>}
+                            {formErrors.author && <p className="text-red-500 text-sm mt-1">{formErrors.author}</p>}
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Description *</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Description </label>
                             <textarea
                                 name="description"
                                 value={formData.description}
@@ -153,15 +153,15 @@ const BookForm: React.FC<BookFormProps> = ({ book, onSubmit, onClose }) => {
                             )}
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Quantity *</label>
+                                <label className="block text-sm font-semibold text-gray-700 mb-1">Quantity </label>
                                 <input
                                     type="number"
                                     name="quantity"
                                     value={formData.quantity}
                                     onChange={handleChange}
-                                    className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 ${
+                                    className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 ${
                                         formErrors.quantity ? "border-red-500" : "border-gray-300"
                                     }`}
                                     min={0}
@@ -211,19 +211,18 @@ const BookForm: React.FC<BookFormProps> = ({ book, onSubmit, onClose }) => {
                     </div>
 
                     {/* Footer */}
-                    <div className="flex justify-end space-x-3 px-6 py-4 border-t border-gray-200">
+                    <div className="flex justify-end px-8 py-4 bg-gray-50 rounded-b-2xl space-x-4">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 border rounded-lg text-gray-700 hover:bg-gray-100 transition"
+                            className="px-4 py-2 border transition duration-200 bg-red-500 text-white rounded-lg hover:bg-red-700"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
-                            className="inline-flex items-center space-x-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                            className="ml-3 px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 flex items-center space-x-2 transition duration-200"
                         >
-                            <Save className="w-4 h-4" />
                             <span>Save Book</span>
                         </button>
                     </div>

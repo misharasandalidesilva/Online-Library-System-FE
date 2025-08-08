@@ -49,7 +49,8 @@ const LoginPage: React.FC = () => {
         try {
             const response = await loginUser(formData);
             toast.success('Login success!');
-            navigate('/DashBoard');
+            console.log('Login success:', response);
+            navigate('/DashBoard');  // ← Login success, navigate to Dashboard
         } catch (error: any) {
             toast.error(error?.response?.data?.message || 'Login failed');
         } finally {
@@ -59,7 +60,7 @@ const LoginPage: React.FC = () => {
 
     return (
         <div className="relative min-h-screen bg-gradient-to-br from-gray-50 to-white flex items-center justify-center p-6 overflow-hidden">
-            {/* subtle animated gradient overlay */}
+            {/* Gradient background animation */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-teal-600 via-green-400 to-teal-400 opacity-40 animate-gradient-x pointer-events-none"></div>
 
             <div className="relative w-full max-w-xs sm:max-w-sm">
@@ -73,7 +74,7 @@ const LoginPage: React.FC = () => {
                     </div>
 
                     <div className="space-y-6">
-                        {/* Email */}
+                        {/* Email Field */}
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
                             <div className="relative group">
@@ -92,7 +93,7 @@ const LoginPage: React.FC = () => {
                             {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email}</p>}
                         </div>
 
-                        {/* Password */}
+                        {/* Password Field */}
                         <div>
                             <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
                             <div className="relative group">
@@ -118,6 +119,7 @@ const LoginPage: React.FC = () => {
                             {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password}</p>}
                         </div>
 
+                        {/* Submit Button */}
                         <button
                             onClick={handleSubmit}
                             disabled={isLoading}
@@ -128,7 +130,12 @@ const LoginPage: React.FC = () => {
 
                         <p className="text-center text-sm text-gray-600 mt-6">
                             Don’t have an account?{' '}
-                            <button className="text-green-600 font-medium hover:underline">Sign up</button>
+                            <button
+                                onClick={() => navigate('/register')}
+                                className="text-green-600 font-medium hover:underline"
+                            >
+                                Sign up
+                            </button>
                         </p>
                     </div>
                 </div>

@@ -40,14 +40,14 @@ const Navbar = () => {
                     <div className="hidden md:flex items-center space-x-6">
                         <button
                             onClick={handleLogin}
-                            className="px-5 py-2 rounded-lg bg-white text-teal-600 font-semibold hover:bg-teal-100 transition"
+                            className="px-5 py-2 rounded-lg bg-white text-teal-600 font-semibold hover:bg-green-100 transition"
                         >
                             Login
                         </button>
 
                         <button
                             onClick={handleLogout}
-                            className="px-5 py-2 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-700 transition"
+                            className="px-5 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 transition"
                         >
                             Logout
                         </button>
